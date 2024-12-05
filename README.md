@@ -52,6 +52,11 @@ This project is designed to identify Azure IP addresses and determine if they ar
 
 ## Usage
 
+Build the server:
+```bash
+npm build
+```
+
 Start the server:
 ```bash
 npm start
