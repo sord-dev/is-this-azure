@@ -17,5 +17,7 @@ resource "azurerm_windows_web_app" "wa" {
   location            = var.location
   service_plan_id     = azurerm_service_plan.asp.id
 
-  site_config {}
+  site_config {
+    always_on = false
+  }
 }
