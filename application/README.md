@@ -54,7 +54,7 @@ This project is designed to identify Azure IP addresses and determine if they ar
 
 Build the server:
 ```bash
-npm build
+npm run build
 ```
 
 Start the server:
