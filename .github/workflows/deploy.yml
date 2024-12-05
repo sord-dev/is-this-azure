@@ -23,6 +23,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: cd to the terraform directory
+      run: cd ./infrastructure || ls
+
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
