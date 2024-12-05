@@ -63,7 +63,3 @@ npm start
 ```
 
 The server will be running on `<DESIGNATED_APP_URL>:<DESIGNATED_PORT>`.
-
-## License
-
-This project is licensed under the MIT License.

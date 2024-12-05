@@ -1,10 +1,10 @@
 {
   "name": "is-this-azure",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only ./index.ts",
-    "start": "node ./index.js",
+    "start": "node ./dist/index.js",
     "build": "tsc"
   },
   "keywords": [],
