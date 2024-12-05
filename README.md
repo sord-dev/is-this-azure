@@ -42,6 +42,13 @@ This project is designed to identify Azure IP addresses and determine if they ar
      ```bash
      npm install
      ```
+4. Create .env file:
+     ```bash
+     touch .env
+     ```
+5. Fill in values:
+- PORT=number
+- APP_URL=string
 
 ## Usage
 
@@ -50,7 +57,7 @@ Start the server:
 npm start
 ```
 
-The server will be running on `http://localhost:3000`.
+The server will be running on `<DESIGNATED_APP_URL>:<DESIGNATED_PORT>`.
 
 ## License
 
