@@ -1,3 +1,4 @@
+
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
@@ -16,7 +17,6 @@ resource "azurerm_windows_web_app" "wa" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
   service_plan_id     = azurerm_service_plan.asp.id
-
   site_config {
     always_on = false
   }

@@ -32,5 +32,5 @@ variable "app_service_sku" {
 variable "app_service_os_type" {
     description = "The OS type of the App Service."
     type = string
-    default = "Windows"
+    default = "Linux"
 }
