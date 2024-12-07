@@ -6,3 +6,7 @@ dist
 *.tfstate
 .tfstate.backup
 .plan
+
+release.zip 
+
+/deployment
