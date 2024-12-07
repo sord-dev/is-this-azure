@@ -75,5 +75,5 @@ jobs:
         with:
           app-name: 'app-service-02'
           slot-name: 'Production'
-          package: ./application/dist/*
+          package: .
           
