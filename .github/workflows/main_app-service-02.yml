@@ -29,7 +29,14 @@ jobs:
           npm run test --if-present
 
       - name: Create deployment package
-        run: ./scripts/create-artefact.sh
+        run: |
+          mkdir deployment
+          cp application/dist/* deployment/ -r
+          cp application/package.json deployment/
+          cp application/package-lock.json deployment/
+          cd deployment
+          zip -r release.zip .
+          mv release.zip ../
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
