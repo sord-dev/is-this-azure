@@ -29,7 +29,7 @@ jobs:
           npm run test --if-present
 
       - name: Create deployment package
-        run: ./scripts/create-artifact.sh
+        run: ./scripts/create-artefact.sh
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
