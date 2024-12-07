@@ -5,6 +5,7 @@ mkdir deployment
 
 # Copy files to the temporary directory
 cp application/dist/* deployment/ -r
+cp application/node_modules deployment/ -r
 cp application/package.json deployment/
 cp application/package-lock.json deployment/
 
