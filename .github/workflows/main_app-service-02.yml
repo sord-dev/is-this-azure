@@ -19,25 +19,16 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: npm install, build, and test
-        working-directory: ./application
         run: |
           npm install
           npm run build --if-present
           npm run test --if-present
 
-      - name: Create deployment package
-        run: |
-          mkdir deployment
-          cp application/dist/* deployment/ -r
-          cp application/node_modules deployment/ -r
-          cp application/package.json deployment/
-          cp application/package-lock.json deployment/
-          cd deployment
-          zip -r release.zip .
-          mv release.zip ../
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -66,9 +57,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_68F5B1674F2E43BC93465FEDB92A8AF4 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_005EF4AA23BB4FE8996FA3240D02B818 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4CF303CD6B474FB5A44D8843E6BAC8D0 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9F79A91B43FF4350BF8A5CA028D62857 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6F60B218BB5F47ED9720E381E972B1B2 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9E9C59D4D5B54413AD4AAE42D2F8BBEF }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
