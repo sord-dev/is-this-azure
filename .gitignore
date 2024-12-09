@@ -2,10 +2,11 @@ node_modules
 .env
 
 dist
+
 *.terraform
 *.tfstate
-.tfstate.backup
-.plan
+*.tfstate.backup
+*.plan
 
 release.zip 
 
