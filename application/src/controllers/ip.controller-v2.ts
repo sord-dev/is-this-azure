@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Request, Response } from 'express';
 
-import IPRangeCalculator from '../services/IPRangeCalculator';
 import WebScraper from '../services/WebScraper';
 
 import { MSMemoryCache } from '../utils/MemoryCache';

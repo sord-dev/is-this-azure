@@ -7,7 +7,7 @@ export async function getIps(req: any, res: any) {
         res.json(ips);
 
     } catch (error: any) {
-        res.status(500).json({ error: error.message, location: error.location });
+        res.status(500).json({ error: error.message });
     }
 }
 
