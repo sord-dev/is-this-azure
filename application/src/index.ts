@@ -9,11 +9,19 @@ app.use(cors());
 app.use(express.json());
 
 
-import ipRoutes from './routes/ip.routes';
-app.use('/ip', ipRoutes);
+import v1Routes from './routes/v1'
+app.use('/v1', v1Routes);
+// app.use('/v2', );
 
 app.get("/", (_req, res) => {
-  res.send("Express Rest API is running");
+  
+  const metadata = {
+    name: "Is this Azure?",
+    version: "v" + process.env.VERSION || "v1.0",
+    status: "running",
+  }
+
+  res.status(200).json(metadata);
 });
 
 export default app;
