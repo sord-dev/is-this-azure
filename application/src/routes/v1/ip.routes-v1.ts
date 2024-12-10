@@ -1,4 +1,4 @@
-import { getIps, getIpsByService, getServicesIndex, identifyIp } from '../../controllers/ip.controller';
+import { getIps, getIpsByService, getServicesIndex, identifyIp } from '../../controllers/ip.controller-v1';
 import { Router } from 'express';
 
 const router = Router();

@@ -1,9 +1,20 @@
 import axios from 'axios';
-import { AzureIpServiceResponse } from '../../types/azure-ip-service';
-
 
 // Old IP Service, IP Range Query is hardcoded, meaning that if the file is updated, the service will not be able to fetch the new data.
 // 10/12/2024 - The URL changed from https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_20241125.json to https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_20241209.json
+
+interface AzureIpServiceResponse {
+    values: Array<{
+        name: string, id: string, properties: {
+            changeNumber: number,
+            region: string,
+            platform: string,
+            systemService: string,
+            addressPrefixes: Array<string>,
+            networkFeatures: Array<string>,
+        }
+    }>
+}
 
 export default class AzureIpService {
     private cachedResponse: any;
