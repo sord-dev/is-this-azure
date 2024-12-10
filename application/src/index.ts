@@ -8,20 +8,13 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-
 import v1Routes from './routes/v1'
 app.use('/v1', v1Routes);
-// app.use('/v2', );
 
-app.get("/", (_req, res) => {
-  
-  const metadata = {
-    name: "Is this Azure?",
-    version: "v" + process.env.VERSION || "v1.0",
-    status: "running",
-  }
+import v2Routes from './routes/v2'
+app.use('/v2', v2Routes);
 
-  res.status(200).json(metadata);
-});
+import { returnMeta } from "./routes/meta";
+app.get("/", returnMeta);
 
 export default app;

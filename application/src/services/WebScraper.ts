@@ -20,7 +20,7 @@ export default class WebScraper implements WebScraperInterface {
     this.httpClient = axios.create({
       timeout: options.timeout || 5000,
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'User-Agent': 'Chrome/94.0.4606.81',
         ...options.headers
       }
     });
@@ -29,7 +29,10 @@ export default class WebScraper implements WebScraperInterface {
   private async fetchDocument(url: string): Promise<Document> {
     try {
       const response = await this.httpClient.get(url);
+      console.log(`WebScraper -> fetchDocument -> ${url}`);
       const dom = new JSDOM(response.data as string);
+
+
       return dom.window.document;
     } catch (error) {
       console.error(`Failed to fetch URL: ${url}`, error);
@@ -41,6 +44,8 @@ export default class WebScraper implements WebScraperInterface {
     const document = await this.fetchDocument(url);
     const elements = document.querySelectorAll(selector);
 
+    console.log(`WebScraper -> querySelectAll -> ${selector}`, elements);
+
     return Array.from(elements)
       .map((element) => element.textContent)
       .filter((text): text is string => text !== null);
@@ -50,6 +55,8 @@ export default class WebScraper implements WebScraperInterface {
     const document = await this.fetchDocument(url);
     const element = document.querySelector(selector);
 
+    console.log(`WebScraper -> querySelect -> ${selector}`, element);
+
     return element?.textContent || '';
   }
 
@@ -57,6 +64,7 @@ export default class WebScraper implements WebScraperInterface {
     const document = await this.fetchDocument(url);
     const element = document.querySelector(selector);
 
+    console.log(`WebScraper -> querySelectAttribute -> ${selector}`);
     return element?.getAttribute(attribute) || '';
   }
 }
