@@ -30,7 +30,7 @@ export const getPublicIPData = async (): Promise<string[]> => {
 
 // We have access to a WebScraper service, alongside an already build ip IPRangeCalculator (IPv4 only)
 
-export const getPublicIPs = async (req: Request, res: Response): Promise<void> => {
+export const getPublicIPs = async (_req: Request, res: Response): Promise<void> => {
     try {
         const data = await getPublicIPData();
         res.status(200).json(data);

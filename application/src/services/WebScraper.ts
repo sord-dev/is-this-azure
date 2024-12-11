@@ -13,6 +13,15 @@ interface WebScraperInterface {
   querySelectAttribute(url: string, selector: string, attribute: string): Promise<string>;
 }
 
+const USER_AGENT_ROSTER = [
+  'Chrome/94.0.4606.81',
+  'Firefox/93.0',
+  'Safari/15.1',
+  'Edge/94.0.992.50',
+  'Opera/80.0.4170.63',
+  'Brave/1.31.91'
+]
+
 export default class WebScraper implements WebScraperInterface {
   private httpClient: Axios.AxiosInstance;
 
@@ -20,7 +29,7 @@ export default class WebScraper implements WebScraperInterface {
     this.httpClient = axios.create({
       timeout: options.timeout || 5000,
       headers: {
-        'User-Agent': 'Chrome/94.0.4606.81',
+        'User-Agent': USER_AGENT_ROSTER[Math.floor(Math.random() * USER_AGENT_ROSTER.length)],
         ...options.headers
       }
     });
