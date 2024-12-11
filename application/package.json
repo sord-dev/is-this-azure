@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only ./index.ts",
     "start": "node index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
