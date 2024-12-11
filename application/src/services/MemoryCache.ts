@@ -11,15 +11,15 @@ interface MSResponseRecord {
  * @public delete
  * @private cache
  */
-export class MSMemoryCache {
+class MSMemoryCache {
     private cache: Record<string, MSResponseRecord> = {};
     
     /**
      * Set a key-value pair in the cache
      * @param key The key to store the value under
-     * @param value The value to store
+     * @param MSResponseRecord The value to store
      * @returns void
-    */
+     */
     public set(key: string, value: MSResponseRecord): void {
         this.cache[key] = value;
     }
@@ -27,9 +27,9 @@ export class MSMemoryCache {
     /**
      * Get a value from the cache
      * @param key The key to retrieve the value for
-     * @returns any
+     * @returns MSResponseRecord | undefined
     */
-    public get(key: string): any {
+    public get(key: string): MSResponseRecord | undefined {
         return this.cache[key];
     }
     
@@ -41,4 +41,19 @@ export class MSMemoryCache {
     public delete(key: string): void {
         delete this.cache[key];
     }
+
+    /**
+      * Check for expired records and delete them
+      * @returns void
+    */
+    public clearExpired(): void {
+        const now = Date.now();
+        for (const key in this.cache) {
+            if (this.cache[key].ttl < now) {
+                delete this.cache[key];
+            }
+        }
+    }
 }
+
+export default new MSMemoryCache();

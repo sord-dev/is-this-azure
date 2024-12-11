@@ -2,10 +2,8 @@ import axios from 'axios';
 import { Request, Response } from 'express';
 
 import WebScraper from '../services/WebScraper';
+import cache from '../services/MemoryCache';
 
-import { MSMemoryCache } from '../utils/MemoryCache';
-
-const cache = new MSMemoryCache();
 interface WebScraperMSResponse {
     address: string;
 }
